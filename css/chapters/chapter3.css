@@ -1,0 +1,291 @@
+/* css/chapters/chapter3.css - Estilos exclusivos del Capítulo 3 (Console) */
+
+/* Consola simulada interactiva */
+.console-simulator {
+    background: #1e1e2f;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border: 1px solid #2d2d3a;
+}
+
+.console-header {
+    background: #2d2d3a;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid #3d3d4a;
+}
+
+.console-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.console-dot.red { background: #ff5f56; }
+.console-dot.yellow { background: #ffbd2e; }
+.console-dot.green { background: #27c93f; }
+
+.console-title {
+    color: #aaa;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.console-body {
+    padding: 1rem;
+    color: #e6f1ff;
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: #1a1a2a;
+}
+
+.console-line {
+    margin: 0.5rem 0;
+    font-family: 'Fira Code', monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.console-prompt {
+    color: #64ffda;
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+.console-output {
+    color: #e6f1ff;
+    margin-left: 1rem;
+    border-left: 2px solid #4ecdc4;
+    padding-left: 1rem;
+}
+
+.console-output.string { color: #ffe66d; }
+.console-output.number { color: #4ecdc4; }
+.console-output.boolean { color: #ff6b6b; }
+.console-output.object { color: #a78bfa; }
+.console-output.error { color: #ff6b6b; background: rgba(255,107,107,0.1); padding: 0.5rem; border-radius: 4px; }
+
+.console-input-area {
+    display: flex;
+    background: #2d2d3a;
+    border-top: 1px solid #3d3d4a;
+}
+
+.console-prefix {
+    background: #3d3d4a;
+    color: #64ffda;
+    padding: 0.75rem 1rem;
+    font-family: 'Fira Code', monospace;
+    font-weight: bold;
+    border-right: 1px solid #4d4d5a;
+}
+
+.console-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1rem;
+    color: #e6f1ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.console-input::placeholder {
+    color: #4a4a5a;
+    font-style: italic;
+}
+
+.console-send-btn {
+    background: #4ecdc4;
+    border: none;
+    color: #0a1929;
+    font-weight: bold;
+    padding: 0 1.5rem;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+}
+
+.console-send-btn:hover {
+    background: #64ffda;
+}
+
+/* Tabla para console.table */
+.console-table {
+    background: #2d2d3a;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1rem 0;
+    border: 1px solid #3d3d4a;
+}
+
+.console-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+}
+
+.console-table th {
+    background: #3d3d4a;
+    color: #64ffda;
+    padding: 0.5rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.console-table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #3d3d4a;
+    color: #e6f1ff;
+}
+
+.console-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Bloques de código para ejemplos */
+.code-block {
+    background: #0a1929;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid #1a2a3a;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    color: #e6f1ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.code-block .comment {
+    color: #4a5a6a;
+    font-style: italic;
+}
+
+.code-block .keyword {
+    color: #64ffda;
+}
+
+.code-block .string {
+    color: #ffe66d;
+}
+
+.code-block .number {
+    color: #4ecdc4;
+}
+
+/* Ejercicios interactivos */
+.console-exercise {
+    background: #f0f4f8;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 6px solid #64ffda;
+}
+
+.console-exercise h4 {
+    color: #0a1929;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.console-exercise .exercise-hint {
+    background: #fff3bf;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+}
+
+.console-exercise .exercise-solution {
+    background: #e6f1ff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border: 1px dashed #0a1929;
+}
+
+/* Mensajes de error simulados */
+.error-message {
+    background: rgba(255,107,107,0.1);
+    border-left: 6px solid #ff6b6b;
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    color: #ff6b6b;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+}
+
+.warning-message {
+    background: rgba(255,189,46,0.1);
+    border-left: 6px solid #ffbd2e;
+    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    color: #ffbd2e;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+}
+
+/* Comparación consola vs editor */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.comparison-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.comparison-item h4 {
+    color: #0a1929;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.comparison-item .code-example {
+    background: #0a1929;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #e6f1ff;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .console-simulator {
+        font-size: 0.8rem;
+    }
+    
+    .console-input {
+        font-size: 0.8rem;
+    }
+}

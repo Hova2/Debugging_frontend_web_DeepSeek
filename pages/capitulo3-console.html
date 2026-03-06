@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 3: Panel Console · DebugManual</title>
+    
+    <!-- CSS global -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    
+    <!-- CSS específico del Capítulo 3 -->
+    <link rel="stylesheet" href="../css/chapters/chapter3.css">
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/icons/favicon.ico" alt="🐛" width="32" height="32">
+                <span>DebugManual</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Capítulo 1</a></li>
+                    <li><a href="capitulo2-elements.html">Capítulo 2</a></li>
+                    <li><a href="capitulo3-console.html" class="active">Capítulo 3</a></li>
+                    <li><a href="../about.html">Sobre el manual</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="chapter-content">
+        <div class="container">
+            <!-- Barra de progreso -->
+            <div class="progress-indicator">
+                <span class="chapter-badge">Capítulo 3 de 10</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%"></div>
+                </div>
+            </div>
+
+            <!-- Título del capítulo -->
+            <h1 class="chapter-title">
+                <span class="title-number">3.</span> 
+                Panel Console
+                <small>La línea de comandos de tu navegador</small>
+            </h1>
+
+            <!-- Introducción -->
+            <section class="content-block" id="intro">
+                <p>El panel <strong>Console</strong> (o consola) es el mejor amigo del desarrollador. Es como tener una ventana directa al cerebro de JavaScript: puedes ver errores, imprimir mensajes, ejecutar código en vivo y hasta interactuar con la página.</p>
+                
+                <div class="note">
+                    <strong>💡 Analogía:</strong> Si el panel Elements es un quirófano para HTML/CSS, la consola es el monitor de signos vitales y el micrófono para hablarle directamente al código.
+                </div>
+                
+                <!-- Consola simulada interactiva -->
+                <div class="console-simulator" id="simulador-consola">
+                    <div class="console-header">
+                        <span class="console-dot red"></span>
+                        <span class="console-dot yellow"></span>
+                        <span class="console-dot green"></span>
+                        <span class="console-title">Consola del navegador (simulada)</span>
+                    </div>
+                    <div class="console-body" id="console-output">
+                        <div class="console-line">
+                            <span class="console-prompt">></span> console.log("Hola desde el manual");
+                        </div>
+                        <div class="console-line console-output string">
+                            "Hola desde el manual"
+                        </div>
+                        <div class="console-line">
+                            <span class="console-prompt">></span> 2 + 2
+                        </div>
+                        <div class="console-line console-output number">
+                            4
+                        </div>
+                        <div class="console-line">
+                            <span class="console-prompt">></span> const usuario = { nombre: "Ana", edad: 30 }
+                        </div>
+                        <div class="console-line console-output object">
+                            ▶ {nombre: "Ana", edad: 30}
+                        </div>
+                    </div>
+                    <div class="console-input-area">
+                        <span class="console-prefix">&gt;</span>
+                        <input type="text" class="console-input" id="console-input" placeholder="Escribe código JavaScript aquí..." value='console.log("Probando")'>
+                        <button class="console-send-btn" id="console-send">Ejecutar</button>
+                    </div>
+                </div>
+                
+                <p class="tip" style="margin-top: 0.5rem; font-size: 0.9rem;">⬆️ ¡Esta consola es interactiva! Prueba a escribir comandos y haz clic en "Ejecutar".</p>
+            </section>
+
+            <!-- 3.1 Abrir la consola -->
+            <section class="content-block" id="seccion-3-1">
+                <h2><span class="section-number">3.1</span> Abrir la consola</h2>
+                
+                <div class="two-column-layout">
+                    <div class="text-content">
+                        <h3>Formas de abrirla:</h3>
+                        <ul class="styled-list">
+                            <li><strong>Atajo de teclado:</strong> <code>F12</code> y luego haz clic en la pestaña "Console"</li>
+                            <li><strong>Atajo directo:</strong> <code>Ctrl+Shift+J</code> (Windows/Linux) / <code>Cmd+Option+J</code> (Mac) abre directamente la consola</li>
+                            <li><strong>Desde el inspector:</strong> Estando en Elements, pulsa <code>Esc</code> para abrir la consola en la parte inferior</li>
+                        </ul>
+                        
+                        <h3>¿Qué verás?</h3>
+                        <ul class="styled-list">
+                            <li><span style="color: #ff6b6b;">Errores en rojo</span> (cuando algo falla)</li>
+                            <li><span style="color: #ffbd2e;">Advertencias en amarillo</span> (cosas que deberías revisar)</li>
+                            <li><span style="color: #4ecdc4;">Mensajes de log</span> (los que tú imprimas con <code>console.log()</code>)</li>
+                            <li>El resultado de cualquier expresión que escribas</li>
+                        </ul>
+                    </div>
+                    
+                    <figure class="illustration">
+                        <svg viewBox="0 0 350 250" style="background: #1e1e2f; border-radius: 8px; padding: 1rem;">
+                            <rect x="10" y="10" width="330" height="230" fill="#2d2d3a" rx="8" />
+                            <text x="30" y="45" fill="#ff6b6b" font-family="monospace" font-size="10">Uncaught TypeError: Cannot read property 'x' of undefined</text>
+                            <text x="30" y="75" fill="#ffbd2e" font-family="monospace" font-size="10">Warning: Deprecated feature used</text>
+                            <text x="30" y="105" fill="#4ecdc4" font-family="monospace" font-size="10">{nombre: "Ana", edad: 30}</text>
+                            <text x="30" y="135" fill="#e6f1ff" font-family="monospace" font-size="10">> console.log("Hola")</text>
+                            <text x="40" y="165" fill="#e6f1ff" font-family="monospace" font-size="10">"Hola"</text>
+                            <line x1="20" y1="190" x2="330" y2="190" stroke="#3d3d4a" stroke-width="1" />
+                            <text x="30" y="215" fill="#64ffda" font-family="monospace" font-size="12">> <tspan fill="white">|</tspan></text>
+                        </svg>
+                        <figcaption>Aspecto típico de la consola</figcaption>
+                    </figure>
+                </div>
+                
+                <div class="console-exercise">
+                    <h4>⚡ Ejercicio 3.1: Abre tu consola real</h4>
+                    <p>1. Abre la consola real de tu navegador ahora mismo (F12 → pestaña Console, o Ctrl+Shift+J).</p>
+                    <p>2. Escribe: <code>console.log("Mi primer mensaje en la consola real")</code> y pulsa Enter.</p>
+                    <p>3. Escribe tu nombre entre comillas, por ejemplo <code>"Ana"</code>, y pulsa Enter. ¿Qué devuelve?</p>
+                    <p>4. Escribe <code>2 + 2</code> y luego <code>"2" + 2</code>. ¿Notas la diferencia?</p>
+                    <div class="exercise-hint">
+                        💡 La consola evalúa cualquier expresión JavaScript y muestra el resultado. Las comillas hacen que sea texto.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3.2 console.log() y amigos -->
+            <section class="content-block" id="seccion-3-2">
+                <h2><span class="section-number">3.2</span> console.log() y su familia</h2>
+                
+                <p>El método más famoso de la consola. Pero tiene varios primos que deberías conocer:</p>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <h3>📝 <code>console.log()</code></h3>
+                        <p>El clásico. Imprime cualquier cosa: textos, números, objetos.</p>
+                        <div class="code-example" style="background: #0a1929; padding: 0.5rem; border-radius: 4px; color: #e6f1ff; font-size: 0.8rem;">
+                            console.log("Hola", 42, {x:1})
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>⚠️ <code>console.warn()</code></h3>
+                        <p>Muestra una advertencia (en amarillo). Útil para avisos.</p>
+                        <div class="code-example" style="background: #0a1929; padding: 0.5rem; border-radius: 4px; color: #e6f1ff; font-size: 0.8rem;">
+                            console.warn("Esto es una advertencia")
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>❌ <code>console.error()</code></h3>
+                        <p>Muestra un error (en rojo). Ideal para fallos.</p>
+                        <div class="code-example" style="background: #0a1929; padding: 0.5rem; border-radius: 4px; color: #e6f1ff; font-size: 0.8rem;">
+                            console.error("Algo salió mal")
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>📊 <code>console.table()</code></h3>
+                        <p>Muestra arrays u objetos en formato tabla, mucho más legible.</p>
+                        <div class="code-example" style="background: #0a1929; padding: 0.5rem; border-radius: 4px; color: #e6f1ff; font-size: 0.8rem;">
+                            console.table([{a:1, b:2}, {a:3, b:4}])
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>⏱️ <code>console.time()</code></h3>
+                        <p>Mide cuánto tarda en ejecutarse un bloque de código.</p>
+                        <div class="code-example" style="background: #0a1929; padding: 0.5rem; border-radius: 4px; color: #e6f1ff; font-size: 0.8rem;">
+                            console.time("bucle"); for(...){}; console.timeEnd("bucle")
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>🧹 <code>console.clear()</code></h3>
+                        <p>Limpia la consola. Muy útil cuando está muy llena.</p>
+                        <div class="code-example" style="background: #0a1929; padding: 0.5rem; border-radius: 4px; color: #e6f1ff; font-size: 0.8rem;">
+                            console.clear()
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="console-exercise">
+                    <h4>⚡ Ejercicio 3.2: Prueba la familia de console</h4>
+                    <p>En la consola real (F12), prueba cada uno de estos comandos:</p>
+                    <ol>
+                        <li><code>console.log("Mensaje normal")</code></li>
+                        <li><code>console.warn("Esto es un aviso")</code></li>
+                        <li><code>console.error("Esto es un error simulado")</code></li>
+                        <li><code>console.table(["manzana", "pera", "uva"])</code></li>
+                        <li><code>console.time("miTiempo")</code> luego <code>for(let i=0; i<1000000; i++){}</code> luego <code>console.timeEnd("miTiempo")</code></li>
+                    </ol>
+                    <p>Observa los diferentes colores e íconos que usa la consola para cada tipo.</p>
+                </div>
+                
+                <!-- Demostración visual de console.table -->
+                <h3>Ejemplo de <code>console.table()</code></h3>
+                <div class="console-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>(índice)</th>
+                                <th>nombre</th>
+                                <th>edad</th>
+                                <th>ciudad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>"Ana"</td>
+                                <td>30</td>
+                                <td>"Madrid"</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>"Carlos"</td>
+                                <td>25</td>
+                                <td>"Barcelona"</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>"Lucía"</td>
+                                <td>35</td>
+                                <td>"Valencia"</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 3.3 La consola como línea de comandos -->
+            <section class="content-block" id="seccion-3-3">
+                <h2><span class="section-number">3.3</span> La consola como línea de comandos</h2>
+                
+                <p>La consola no solo muestra mensajes, también puedes ejecutar cualquier código JavaScript y modificar la página en vivo.</p>
+                
+                <div class="two-column-layout">
+                    <div class="text-content">
+                        <h3>Comandos útiles en la consola:</h3>
+                        <ul class="styled-list">
+                            <li><code>document.title</code> → Muestra el título de la página</li>
+                            <li><code>document.body.style.background = "red"</code> → Cambia el fondo</li>
+                            <li><code>window.location.href</code> → Muestra la URL actual</li>
+                            <li><code>$0</code> → Hace referencia al elemento que tienes seleccionado en Elements</li>
+                            <li><code>$_</code> → Resultado de la última operación</li>
+                            <li><code>clear()</code> → Limpia la consola</li>
+                        </ul>
+                    </div>
+                    <div class="illustration">
+                        <svg viewBox="0 0 300 200" style="background: #f0f4f8; border-radius: 8px; padding: 1rem;">
+                            <rect x="10" y="10" width="280" height="40" fill="#0a1929" rx="4" />
+                            <text x="20" y="35" fill="#64ffda" font-family="monospace" font-size="12">> document.title</text>
+                            <rect x="10" y="60" width="280" height="30" fill="#2d2d3a" rx="4" />
+                            <text x="20" y="82" fill="#4ecdc4" font-family="monospace" font-size="12">"Capítulo 3: Panel Console"</text>
+                            <rect x="10" y="100" width="280" height="40" fill="#0a1929" rx="4" />
+                            <text x="20" y="125" fill="#64ffda" font-family="monospace" font-size="12">> document.body.style.background</text>
+                            <text x="20" y="145" fill="#4ecdc4" font-family="monospace" font-size="12">"red"</text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="console-exercise">
+                    <h4>⚡ Ejercicio 3.3: Modifica la página desde la consola</h4>
+                    <p>En la consola real, prueba estos comandos (uno a uno):</p>
+                    <ol>
+                        <li><code>document.title = "Mi título modificado"</code> → Verás cómo cambia el título de la pestaña</li>
+                        <li><code>document.body.style.background = "#0a1929"</code> → El fondo se vuelve azul oscuro</li>
+                        <li><code>document.body.style.color = "white"</code> → El texto se vuelve blanco</li>
+                        <li><code>document.querySelector("h1").style.color = "#64ffda"</code> → El título principal cambia de color</li>
+                    </ol>
+                    <p>💡 Estos cambios son temporales. Recarga la página para volver al estado original.</p>
+                </div>
+            </section>
+
+            <!-- 3.4 Leyendo errores de la consola -->
+            <section class="content-block" id="seccion-3-4">
+                <h2><span class="section-number">3.4</span> Leyendo errores como un profesional</h2>
+                
+                <p>Cuando algo falla, la consola muestra un mensaje de error. Aprender a leerlos es clave para debuggear rápido.</p>
+                
+                <div class="error-message">
+                    Uncaught TypeError: Cannot read property 'length' of undefined<br>
+                    <span style="font-size: 0.8rem; color: #aaa;">at script.js:5:3</span>
+                </div>
+                
+                <h3>Partes de un error:</h3>
+                <ul class="styled-list">
+                    <li><strong>Tipo de error:</strong> <code>TypeError</code>, <code>ReferenceError</code>, <code>SyntaxError</code>, etc.</li>
+                    <li><strong>Mensaje:</strong> <code>Cannot read property 'length' of undefined</code> → Explica qué pasó</li>
+                    <li><strong>Archivo y línea:</strong> <code>script.js:5:3</code> → Dónde ocurrió (archivo, línea, columna)</li>
+                </ul>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>🔴 ReferenceError</h4>
+                        <div class="code-example">
+                            console.log(variableNoDefinida);
+                        </div>
+                        <div class="error-message" style="margin-top: 0.5rem;">
+                            Uncaught ReferenceError: variableNoDefinida is not defined
+                        </div>
+                        <p><strong>Significa:</strong> Usaste una variable que no existe.</p>
+                    </div>
+                    
+                    <div class="comparison-item">
+                        <h4>🟠 TypeError</h4>
+                        <div class="code-example">
+                            const num = 42;<br>
+                            num.toUpperCase();
+                        </div>
+                        <div class="error-message" style="margin-top: 0.5rem;">
+                            Uncaught TypeError: num.toUpperCase is not a function
+                        </div>
+                        <p><strong>Significa:</strong> Intentaste usar un método que no pertenece a ese tipo de dato.</p>
+                    </div>
+                    
+                    <div class="comparison-item">
+                        <h4>🟡 SyntaxError</h4>
+                        <div class="code-example">
+                            console.log("Hola
+                        </div>
+                        <div class="error-message" style="margin-top: 0.5rem;">
+                            Uncaught SyntaxError: Invalid or unexpected token
+                        </div>
+                        <p><strong>Significa:</strong> Error de escritura en el código (falta cerrar comillas, llaves, etc.)</p>
+                    </div>
+                    
+                    <div class="comparison-item">
+                        <h4>⚪ undefined related</h4>
+                        <div class="code-example">
+                            const obj = {};<br>
+                            obj.propiedad.otra
+                        </div>
+                        <div class="error-message" style="margin-top: 0.5rem;">
+                            Uncaught TypeError: Cannot read property 'otra' of undefined
+                        </div>
+                        <p><strong>Significa:</strong> Intentaste acceder a una propiedad de algo que es undefined.</p>
+                    </div>
+                </div>
+                
+                <div class="console-exercise">
+                    <h4>⚡ Ejercicio 3.4: Provoca errores a propósito</h4>
+                    <p>En la consola real, escribe estos comandos y observa los errores:</p>
+                    <ol>
+                        <li><code>variableInexistente</code> (ReferenceError)</li>
+                        <li><code>(5).toUpperCase()</code> (TypeError: los números no tienen toUpperCase)</li>
+                        <li><code>const obj = {}; obj.prop.subprop</code> (TypeError: cannot read property of undefined)</li>
+                        <li><code>console.log("Hola</code> (SyntaxError: falta cerrar comillas)</li>
+                    </ol>
+                    <p>💡 Fíjate en el color del mensaje y en la información que da sobre la línea del error.</p>
+                </div>
+            </section>
+
+            <!-- 3.5 Depurando con console.log() vs breakpoints -->
+            <section class="content-block" id="seccion-3-5">
+                <h2><span class="section-number">3.5</span> console.log() vs. debugger</h2>
+                
+                <p>El método más básico de debugging es llenar el código de <code>console.log()</code> para ver qué valor tienen las variables. Pero tiene limitaciones.</p>
+                
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>📝 console.log()</h4>
+                        <div class="code-example">
+                            function suma(a, b) {<br>
+                            &nbsp;&nbsp;console.log("a:", a);<br>
+                            &nbsp;&nbsp;console.log("b:", b);<br>
+                            &nbsp;&nbsp;let resultado = a + b;<br>
+                            &nbsp;&nbsp;console.log("resultado:", resultado);<br>
+                            &nbsp;&nbsp;return resultado;<br>
+                            }
+                        </div>
+                        <p><strong>Ventaja:</strong> Simple, rápido, no requiere aprender nada nuevo.</p>
+                        <p><strong>Desventaja:</strong> Hay que borrar los logs después, ensucia el código, no permite pausar la ejecución.</p>
+                    </div>
+                    
+                    <div class="comparison-item">
+                        <h4>⏸️ debugger y breakpoints</h4>
+                        <div class="code-example">
+                            function suma(a, b) {<br>
+                            &nbsp;&nbsp;debugger; // Pausa aquí<br>
+                            &nbsp;&nbsp;let resultado = a + b;<br>
+                            &nbsp;&nbsp;return resultado;<br>
+                            }
+                        </div>
+                        <p><strong>Ventaja:</strong> Pausa la ejecución, puedes inspeccionar variables en ese momento, ver el call stack, etc.</p>
+                        <p><strong>Desventaja:</strong> Requiere abrir DevTools y conocer el panel Sources (lo veremos en el Capítulo 5).</p>
+                    </div>
+                </div>
+                
+                <div class="warning-message">
+                    <strong>Importante:</strong> Nunca dejes <code>console.log()</code> en código de producción. Son útiles para desarrollo, pero en producción pueden ralentizar y mostrar información interna.
+                </div>
+                
+                <div class="console-exercise">
+                    <h4>⚡ Ejercicio 3.5: Encuentra el bug con console.log</h4>
+                    <p>La siguiente función tiene un bug. Usa <code>console.log()</code> en la consola para descubrirlo:</p>
+                    
+                    <div class="code-block">
+                        <pre>
+<span class="keyword">function</span> <span class="function">calcularDescuento</span>(precio, descuento) {
+    <span class="keyword">let</span> precioFinal = precio - descuento;
+    <span class="keyword">return</span> <span class="string">"El precio final es: "</span> + precioFinal;
+}
+
+<span class="comment">// Prueba:</span>
+calcularDescuento(100, 20);  // Esperamos 80
+calcularDescuento(50, 10);   // Esperamos 40</pre>
+                    </div>
+                    
+                    <details>
+                        <summary>🔍 Ver pista</summary>
+                        <p>El código parece correcto, pero... ¿y si el descuento es un porcentaje? Prueba <code>calcularDescuento(100, "20")</code> (con el descuento como string).</p>
+                    </details>
+                    
+                    <details>
+                        <summary>✅ Ver solución</summary>
+                        <p>El bug es que no se valida el tipo de dato. Si <code>descuento</code> es un string, JavaScript concatena en lugar de restar:</p>
+                        <div class="code-example" style="background: #0a1929; color: #e6f1ff; padding: 0.5rem;">
+                            "100" - "20" → 80 (bien, JavaScript convierte)<br>
+                            pero "100" - "20%" → NaN<br>
+                            y si es string con texto, falla.
+                        </div>
+                        <p>La solución sería convertir a número: <code>precio - Number(descuento)</code> o <code>precio - parseFloat(descuento)</code></p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- 3.6 Trucos avanzados de consola -->
+            <section class="content-block" id="seccion-3-6">
+                <h2><span class="section-number">3.6</span> Trucos avanzados (que pocos conocen)</h2>
+                
+                <ul class="styled-list">
+                    <li><code>console.assert(condición, mensaje)</code> → Solo imprime si la condición es falsa</li>
+                    <li><code>console.count("etiqueta")</code> → Cuenta cuántas veces se llama</li>
+                    <li><code>console.group()</code> y <code>console.groupEnd()</code> → Agrupa mensajes</li>
+                    <li><code>console.trace()</code> → Muestra la pila de llamadas (quién llamó a quién)</li>
+                    <li><code>console.log({variable1, variable2})</code> → Atajo para imprimir variables con nombre</li>
+                </ul>
+                
+                <div class="console-simulator" style="margin-top: 1rem;">
+                    <div class="console-header">
+                        <span class="console-dot red"></span>
+                        <span class="console-dot yellow"></span>
+                        <span class="console-dot green"></span>
+                        <span class="console-title">Ejemplo de console.group()</span>
+                    </div>
+                    <div class="console-body">
+                        <div class="console-line console-output">▼ Grupo: Datos usuario</div>
+                        <div class="console-line console-output" style="margin-left: 1rem;">  nombre: "Ana"</div>
+                        <div class="console-line console-output" style="margin-left: 1rem;">  edad: 30</div>
+                        <div class="console-line console-output">▲ fin del grupo</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resumen y ejercicios finales -->
+            <section class="content-block chapter-end">
+                <h2>📌 Resumen del Capítulo 3</h2>
+                <ul class="summary-list">
+                    <li>La consola se abre con F12 o Ctrl+Shift+J.</li>
+                    <li><code>console.log()</code>, <code>warn()</code>, <code>error()</code> y <code>table()</code> son tus herramientas básicas.</li>
+                    <li>Puedes ejecutar cualquier código JavaScript directamente en la consola.</li>
+                    <li>Los errores tienen tipo, mensaje y ubicación (archivo:línea).</li>
+                    <li><code>console.log()</code> es útil pero temporal; para debugging avanzado usaremos breakpoints.</li>
+                    <li>Nunca dejes <code>console.log()</code> en producción.</li>
+                </ul>
+                
+                <!-- Ejercicio final integrador -->
+                <div class="console-exercise" style="background: #0a1929; color: white; border-left-color: #64ffda;">
+                    <h4 style="color: #64ffda;">🎯 Ejercicio final: Depura este código</h4>
+                    <p>El siguiente código tiene 3 errores (uno de cada tipo). Copia y pega en la consola real y encuentra los errores usando lo aprendido:</p>
+                    
+                    <div class="code-block" style="background: #1a2a3a;">
+                        <pre>
+<span class="comment">// Sistema de notas de estudiantes</span>
+<span class="keyword">const</span> estudiantes = [
+    { nombre: "Ana", nota: 85 },
+    { nombre: "Luis", nota: 92 },
+    { nombre: "Carlos", nota: 78 }
+];
+
+<span class="keyword">function</span> <span class="function">calcularPromedio</span>(estudiantes) {
+    <span class="keyword">let</span> suma = 0;
+    <span class="keyword">for</span> (<span class="keyword">let</span> i = 0; i < estudiantes.lenght; i++) {  <span class="comment">// Error 1</span>
+        suma += estudiantes[i].nota;
+    }
+    <span class="keyword">return</span> suma / estudiantes.longitud;  <span class="comment">// Error 2</span>
+}
+
+<span class="keyword">function</span> <span class="function">mostrarResultado</span>(promedio) {
+    console.log("El promedio es: " + promedi);  <span class="comment">// Error 3</span>
+}
+
+<span class="keyword">const</span> promedio = calcularPromedio(estudiantes);
+mostrarResultado(promedio);</pre>
+                    </div>
+                    
+                    <details>
+                        <summary style="color: #64ffda;">🔍 Ver solución</summary>
+                        <ul style="color: white;">
+                            <li><strong>Error 1 (Sintaxis/Runtime):</strong> <code>estudiantes.lenght</code> → debería ser <code>estudiantes.length</code> (propiedad incorrecta).</li>
+                            <li><strong>Error 2 (Runtime):</strong> <code>estudiantes.longitud</code> → no existe, debería ser <code>estudiantes.length</code>.</li>
+                            <li><strong>Error 3 (ReferenceError):</strong> <code>promedi</code> → la variable se llama <code>promedio</code>.</li>
+                        </ul>
+                    </details>
+                </div>
+                
+                <div class="next-steps">
+                    <h3>⏭️ Preparación para el Capítulo 4</h3>
+                    <p>En el próximo capítulo exploraremos el panel <strong>Network</strong>, donde veremos cómo se cargan los recursos, cómo medir tiempos y cómo depurar peticiones que fallan.</p>
+                    <p>Antes de avanzar, practica:</p>
+                    <ul>
+                        <li>Usa <code>console.table()</code> para mostrar los estudiantes del ejercicio.</li>
+                        <li>Prueba <code>console.time()</code> para medir cuánto tarda un bucle.</li>
+                        <li>Investiga qué hace <code>console.trace()</code>.</li>
+                    </ul>
+                    <a href="capitulo4-network.html" class="button">Continuar al Capítulo 4 →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Manual de Debugging para Principiantes · <a href="../about.html">Sobre este proyecto</a></p>
+            <p>Capítulo 3 completado · Siguiente: Panel Network</p>
+            <p><a href="capitulo2-elements.html">← Volver al Capítulo 2</a> | <a href="../index.html">Inicio</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/utils/helpers.js"></script>
+    <script src="../js/components/header.js"></script>
+    <script src="../js/components/footer.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <!-- Script para la consola simulada interactiva -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Consola simulada interactiva
+            const consoleInput = document.getElementById('console-input');
+            const sendButton = document.getElementById('console-send');
+            const outputDiv = document.getElementById('console-output');
+            
+            if (consoleInput && sendButton && outputDiv) {
+                sendButton.addEventListener('click', function() {
+                    ejecutarComando();
+                });
+                
+                consoleInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        ejecutarComando();
+                    }
+                });
+                
+                function ejecutarComando() {
+                    const comando = consoleInput.value.trim();
+                    if (comando === '') return;
+                    
+                    // Mostrar el comando ingresado
+                    const promptLine = document.createElement('div');
+                    promptLine.className = 'console-line';
+                    promptLine.innerHTML = `<span class="console-prompt">></span> ${comando}`;
+                    outputDiv.appendChild(promptLine);
+                    
+                    // Capturar console.log del usuario
+                    const originalLog = console.log;
+                    const originalWarn = console.warn;
+                    const originalError = console.error;
+                    
+                    let logs = [];
+                    
+                    console.log = function(...args) {
+                        const mensaje = args.map(arg => {
+                            if (typeof arg === 'object') {
+                                return JSON.stringify(arg, null, 2);
+                            }
+                            return String(arg);
+                        }).join(' ');
+                        
+                        logs.push({ tipo: 'log', mensaje });
+                        originalLog.apply(console, args);
+                    };
+                    
+                    console.warn = function(...args) {
+                        const mensaje = args.join(' ');
+                        logs.push({ tipo: 'warn', mensaje });
+                        originalWarn.apply(console, args);
+                    };
+                    
+                    console.error = function(...args) {
+                        const mensaje = args.join(' ');
+                        logs.push({ tipo: 'error', mensaje });
+                        originalError.apply(console, args);
+                    };
+                    
+                    try {
+                        // Evaluar el comando
+                        const resultado = eval(comando);
+                        
+                        // Si hay resultado y no hubo console.log, mostrar resultado
+                        if (resultado !== undefined && logs.length === 0) {
+                            let tipo = typeof resultado;
+                            let clase = 'console-output';
+                            if (tipo === 'string') clase += ' string';
+                            else if (tipo === 'number') clase += ' number';
+                            else if (tipo === 'boolean') clase += ' boolean';
+                            else if (tipo === 'object') clase += ' object';
+                            
+                            const resultLine = document.createElement('div');
+                            resultLine.className = `console-line ${clase}`;
+                            
+                            if (tipo === 'object') {
+                                resultLine.innerHTML = `▶ ${JSON.stringify(resultado)}`;
+                            } else {
+                                resultLine.textContent = String(resultado);
+                            }
+                            
+                            outputDiv.appendChild(resultLine);
+                        }
+                        
+                        // Mostrar logs capturados
+                        logs.forEach(log => {
+                            const logLine = document.createElement('div');
+                            logLine.className = `console-line console-output`;
+                            if (log.tipo === 'error') logLine.classList.add('error');
+                            else if (log.tipo === 'warn') logLine.style.color = '#ffbd2e';
+                            logLine.textContent = log.mensaje;
+                            outputDiv.appendChild(logLine);
+                        });
+                        
+                    } catch (error) {
+                        const errorLine = document.createElement('div');
+                        errorLine.className = 'console-line console-output error';
+                        errorLine.textContent = `Uncaught ${error.name}: ${error.message}`;
+                        outputDiv.appendChild(errorLine);
+                    } finally {
+                        // Restaurar console original
+                        console.log = originalLog;
+                        console.warn = originalWarn;
+                        console.error = originalError;
+                        
+                        // Limpiar input
+                        consoleInput.value = '';
+                        
+                        // Scroll al final
+                        outputDiv.scrollTop = outputDiv.scrollHeight;
+                    }
+                }
+            }
+            
+            // Registrar progreso del capítulo 3
+            if (window.DebugHelpers) {
+                DebugHelpers.saveProgress(3, 'console');
+            }
+            
+            console.log('🎯 Capítulo 3: Panel Console cargado. ¡A probar comandos!');
+        });
+    </script>
+</body>
+</html>
