@@ -1,0 +1,17 @@
+/* css/components/footer.css */
+.site-footer {
+    background: var(--primary-dark);
+    color: white;
+    padding: 3rem 0;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.site-footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}

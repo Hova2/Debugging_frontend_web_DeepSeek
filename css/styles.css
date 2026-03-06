@@ -1,0 +1,334 @@
+/* css/styles.css - Estilos base del manual */
+
+:root {
+    --primary-dark: #0a1929;
+    --primary-light: #e6f1ff;
+    --accent: #64ffda;
+    --syntax: #ff6b6b;
+    --logic: #4ecdc4;
+    --runtime: #ffe66d;
+    --text-dark: #0a1929;
+    --text-light: #e6f1ff;
+    --gray-bg: #f8fafc;
+    --font-main: 'Inter', sans-serif;
+    --font-code: 'Fira Code', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: var(--gray-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Capítulos */
+.chapter-content {
+    padding: 4rem 0;
+}
+
+.chapter-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.chapter-title small {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #64748b;
+    margin-top: 0.5rem;
+}
+
+.title-number {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Bloques de contenido */
+.content-block {
+    margin: 4rem 0;
+    scroll-margin-top: 2rem;
+}
+
+.section-number {
+    display: inline-block;
+    background: var(--primary-dark);
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-right: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Cards para mentalidad */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Tarjetas de error */
+.error-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-left: 6px solid;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error-syntax { border-left-color: var(--syntax); }
+.error-logic { border-left-color: var(--logic); }
+.error-runtime { border-left-color: var(--runtime); }
+
+.error-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.error-tag {
+    background: var(--primary-dark);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.error-message {
+    font-family: var(--font-code);
+    color: #64748b;
+}
+
+/* Comparación de código */
+.code-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.code-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.wrong pre {
+    background: #fff1f0;
+    border: 1px solid var(--syntax);
+}
+
+.right pre {
+    background: #f0fff4;
+    border: 1px solid var(--logic);
+}
+
+pre {
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+.difficulty {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+/* Lista de herramientas */
+.tool-list {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.tool-list li {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.tool-list li:last-child {
+    border-bottom: none;
+}
+
+.tool-list strong {
+    min-width: 180px;
+}
+
+/* Mock de consola */
+.console-mock {
+    background: #1e1e2f;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    margin: 2rem 0;
+}
+
+.console-header {
+    background: #2d2d3a;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.console-title {
+    color: #aaa;
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.console-body {
+    padding: 1rem;
+    color: #fff;
+}
+
+.console-body .line {
+    margin: 0.5rem 0;
+    font-family: var(--font-code);
+}
+
+.console-body .prompt {
+    color: var(--accent);
+    margin-right: 0.5rem;
+}
+
+.console-body .output {
+    color: #aaa;
+    margin-left: 1rem;
+}
+
+.console-body .error {
+    color: #ff6b6b;
+}
+
+/* Resumen y navegación */
+.summary-list {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.summary-list li {
+    padding: 0.5rem 0;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.summary-list li::before {
+    content: "✓";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.next-steps {
+    background: #e2e8f0;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 3rem;
+}
+
+.next-steps pre {
+    background: var(--primary-dark);
+    color: var(--accent);
+    margin: 1rem 0;
+}
+
+.button {
+    display: inline-block;
+    background: var(--primary-dark);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+.button:hover {
+    background: #1a2a3a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .chapter-title {
+        font-size: 2rem;
+    }
+    
+    .chapter-title small {
+        font-size: 1.2rem;
+    }
+    
+    .code-comparison {
+        grid-template-columns: 1fr;
+    }
+    
+    .tool-list li {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .tool-list strong {
+        min-width: auto;
+    }
+}

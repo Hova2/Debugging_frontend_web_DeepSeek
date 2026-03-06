@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capítulo 2: Panel Elements · DebugManual</title>
+    
+    <!-- CSS global (sin estilos específicos de capítulo) -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    
+    <!-- CSS específico del Capítulo 2 -->
+    <link rel="stylesheet" href="../css/chapters/chapter2.css">
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header componente (sin cambios) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/icons/favicon.ico" alt="🐛" width="32" height="32">
+                <span>DebugManual</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html">Capítulo 1</a></li>
+                    <li><a href="capitulo2-elements.html" class="active">Capítulo 2</a></li>
+                    <li><a href="capitulo3-console.html">Capítulo 3</a></li>
+                    <li><a href="../about.html">Sobre el manual</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal (igual que antes, pero usando las clases CSS del archivo externo) -->
+    <main class="chapter-content">
+        <div class="container">
+            <!-- Barra de progreso -->
+            <div class="progress-indicator">
+                <span class="chapter-badge">Capítulo 2 de 10</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                </div>
+            </div>
+
+            <!-- Título del capítulo -->
+            <h1 class="chapter-title">
+                <span class="title-number">2.</span> 
+                Panel Elements
+                <small>El taller de HTML y CSS en vivo</small>
+            </h1>
+
+            <!-- Introducción -->
+            <section class="content-block" id="intro">
+                <p>El panel <strong>Elements</strong> (o "Inspector") es tu taller de reparación rápida. Aquí puedes ver la estructura HTML de cualquier página, modificar estilos CSS en tiempo real y experimentar sin miedo a romper nada porque los cambios son locales y temporales.</p>
+                
+                <div class="note">
+                    <strong>🔧 Analogía:</strong> Piensa en el panel Elements como un quirófano donde puedes operar una página web viva, ver sus huesos (HTML), su piel (CSS) y hacer pruebas antes de escribir el código definitivo.
+                </div>
+            </section>
+
+            <!-- 2.1 Cómo abrir y navegar -->
+            <section class="content-block" id="seccion-2-1">
+                <h2><span class="section-number">2.1</span> Abrir y navegar el panel</h2>
+                
+                <div class="two-column-layout">
+                    <div class="text-content">
+                        <h3>Formas de abrirlo:</h3>
+                        <ul class="styled-list">
+                            <li><strong>Atajo de teclado:</strong> <code>F12</code> o <code>Ctrl+Shift+C</code> (Windows/Linux) / <code>Cmd+Shift+C</code> (Mac)</li>
+                            <li><strong>Menú contextual:</strong> Clic derecho en cualquier elemento → "Inspeccionar"</li>
+                            <li><strong>Menú del navegador:</strong> Más herramientas → Herramientas de desarrollo</li>
+                        </ul>
+                        
+                        <h3>Estructura del panel:</h3>
+                        <p>El panel Elements tiene dos partes principales:</p>
+                        <ul class="styled-list">
+                            <li><strong>Árbol DOM (izquierda):</strong> Muestra la estructura HTML de la página. Puedes expandir/colapsar etiquetas.</li>
+                            <li><strong>Panel de estilos (derecha):</strong> Muestra las reglas CSS aplicadas al elemento seleccionado, con su origen (archivo .css, etiqueta style, estilos en línea).</li>
+                        </ul>
+                    </div>
+                    
+                    <figure class="illustration">
+                        <!-- SVG del panel Elements (igual) -->
+                        <svg viewBox="0 0 400 300" style="background: #1e1e2f; border-radius: 8px; padding: 1rem;">
+                            <rect x="10" y="10" width="180" height="280" fill="#2d2d3a" rx="4" />
+                            <text x="20" y="35" fill="#64ffda" font-family="monospace" font-size="10">▼ body</text>
+                            <text x="30" y="55" fill="#e6f1ff" font-family="monospace" font-size="10">▼ div.container</text>
+                            <text x="40" y="75" fill="#e6f1ff" font-family="monospace" font-size="10">&lt;h1&gt; Título &lt;/h1&gt;</text>
+                            <text x="40" y="95" fill="#e6f1ff" font-family="monospace" font-size="10">&lt;p&gt; Párrafo... &lt;/p&gt;</text>
+                            <text x="30" y="115" fill="#e6f1ff" font-family="monospace" font-size="10">▲ div.container</text>
+                            <text x="20" y="135" fill="#e6f1ff" font-family="monospace" font-size="10">&lt;footer&gt; &lt;/footer&gt;</text>
+                            
+                            <!-- Panel de estilos -->
+                            <rect x="200" y="10" width="180" height="280" fill="#2d2d3a" rx="4" />
+                            <text x="210" y="35" fill="#64ffda" font-family="sans-serif" font-size="10">Estilos</text>
+                            <text x="210" y="55" fill="#e6f1ff" font-family="monospace" font-size="9">element.style {</text>
+                            <text x="220" y="70" fill="#e6f1ff" font-family="monospace" font-size="9">color: blue;</text>
+                            <text x="210" y="85" fill="#e6f1ff" font-family="monospace" font-size="9">}</text>
+                            <text x="210" y="110" fill="#e6f1ff" font-family="monospace" font-size="9">h1 {</text>
+                            <text x="220" y="125" fill="#e6f1ff" font-family="monospace" font-size="9">font-size: 2rem;</text>
+                            <text x="210" y="140" fill="#e6f1ff" font-family="monospace" font-size="9">}</text>
+                        </svg>
+                        <figcaption>Vista simplificada del panel Elements</figcaption>
+                    </figure>
+                </div>
+                
+                <!-- Ejercicio rápido -->
+                <div class="exercise-box">
+                    <h4>⚡ Ejercicio 2.1: Tu primera inspección</h4>
+                    <p>1. Abre el panel Elements ahora mismo (F12 o clic derecho → Inspeccionar).</p>
+                    <p>2. Encuentra este mismo párrafo en el árbol DOM.</p>
+                    <p>3. ¿Puedes ver mis atributos? Busca el <code>class="exercise-box"</code>.</p>
+                </div>
+            </section>
+
+            <!-- 2.2 Modificar HTML en vivo -->
+            <section class="content-block" id="seccion-2-2">
+                <h2><span class="section-number">2.2</span> Modificar HTML en tiempo real</h2>
+                
+                <p>Una de las características más poderosas: puedes cambiar el texto, atributos y estructura HTML y ver los resultados al instante.</p>
+                
+                <div class="cards-container">
+                    <div class="card">
+                        <h3>✏️ Editar texto</h3>
+                        <p>Doble clic en cualquier texto dentro del árbol DOM y escribe lo que quieras.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🏷️ Editar atributos</h3>
+                        <p>Doble clic en un atributo (como class="...") y cámbialo.</p>
+                    </div>
+                    <div class="card">
+                        <h3>➕ Añadir elementos</h3>
+                        <p>Clic derecho en un nodo → "Edit as HTML" para escribir HTML nuevo, o "Copy" → "Copy element" para duplicar.</p>
+                    </div>
+                </div>
+                
+                <!-- Elemento de demostración -->
+                <h3>Prueba con este elemento:</h3>
+                <div class="demo-box" id="mi-caja-demo">
+                    ¡Modifícame!<br>
+                    (desde el inspector)
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>⚡ Ejercicio 2.2: Manos al código</h4>
+                    <ol>
+                        <li>Inspecciona la caja de arriba (la que dice "¡Modifícame!").</li>
+                        <li>Cambia el texto por "¡Lo logré!".</li>
+                        <li>Cambia el atributo <code>class="demo-box"</code> por <code>class="demo-box modificado"</code>. ¿Notas algún cambio? (Si no, es porque no hay estilos para .modificado, pero el atributo cambió).</li>
+                        <li>Añade un atributo <code>style="background: red;"</code> directamente en la etiqueta HTML desde el inspector. La caja debería volverse roja.</li>
+                    </ol>
+                    <p class="tip">💡 Todo cambio es temporal. Si recargas la página, vuelve al original.</p>
+                </div>
+            </section>
+
+            <!-- 2.3 Box Model y estilos -->
+            <section class="content-block" id="seccion-2-3">
+                <h2><span class="section-number">2.3</span> El Box Model y panel de estilos</h2>
+                
+                <div class="two-column-layout">
+                    <div class="text-content">
+                        <p>En la pestaña "Styles" (junto al árbol DOM) ves todas las reglas CSS aplicadas al elemento seleccionado. Pero hay una joya escondida: la pestaña <strong>"Computed"</strong> y el diagrama del <strong>Box Model</strong>.</p>
+                        
+                        <h3>El Box Model</h3>
+                        <p>Todo elemento HTML es una caja compuesta por:</p>
+                        <ul class="styled-list">
+                            <li><strong>Content:</strong> El contenido (texto, imagen)</li>
+                            <li><strong>Padding:</strong> Espacio interno, alrededor del contenido</li>
+                            <li><strong>Border:</strong> El borde</li>
+                            <li><strong>Margin:</strong> Espacio externo, separa del resto de elementos</li>
+                        </ul>
+                        
+                        <p>En el panel Elements, abajo a la derecha, hay un diagrama interactivo que muestra estas dimensiones para el elemento seleccionado. ¡Puedes hacer clic en los números y modificarlos!</p>
+                    </div>
+                    
+                    <figure class="illustration">
+                        <svg viewBox="0 0 300 200" style="background: #f0f4f8; border-radius: 8px; padding: 0.5rem;">
+                            <!-- Box Model SVG -->
+                            <rect x="50" y="30" width="200" height="140" fill="#ffeaa7" stroke="#fdcb6e" stroke-width="2" />
+                            <text x="150" y="45" text-anchor="middle" font-size="10">Margin (exterior)</text>
+                            
+                            <rect x="70" y="50" width="160" height="100" fill="#81ecec" stroke="#00cec9" stroke-width="2" />
+                            <text x="150" y="65" text-anchor="middle" font-size="10">Border</text>
+                            
+                            <rect x="90" y="70" width="120" height="60" fill="#a29bfe" stroke="#6c5ce7" stroke-width="2" />
+                            <text x="150" y="85" text-anchor="middle" font-size="10">Padding</text>
+                            
+                            <rect x="110" y="90" width="80" height="30" fill="#fd79a8" stroke="#e84342" stroke-width="2" />
+                            <text x="150" y="110" text-anchor="middle" font-size="10" fill="white">Content</text>
+                        </svg>
+                        <figcaption>Diagrama del Box Model</figcaption>
+                    </figure>
+                </div>
+                
+                <!-- Elemento para probar box model -->
+                <div class="box-model-demo" id="caja-box-model">
+                    Caja de demostración
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>⚡ Ejercicio 2.3: Jugando con el box model</h4>
+                    <ol>
+                        <li>Inspecciona la caja naranja de arriba (la que dice "Caja de demostración").</li>
+                        <li>En la pestaña "Styles", busca el diagrama del Box Model (suele estar al final, o en la pestaña "Computed").</li>
+                        <li>Haz clic en el número del padding (actualmente 2rem) y cámbialo a 3rem. Observa cómo se agranda la caja por dentro.</li>
+                        <li>Cambia el margin a 3rem también. ¿Ves más espacio alrededor?</li>
+                        <li>Ahora, desde la pestaña "Styles", desmarca temporalmente la propiedad <code>background</code>. La caja pierde su color. Vuelve a marcarla para restaurarlo.</li>
+                    </ol>
+                    <p class="tip">💡 Desmarcar propiedades es una forma rápida de ver cómo afectan al diseño sin borrarlas permanentemente.</p>
+                </div>
+            </section>
+
+            <!-- 2.4 Estados :hover y pseudoclases -->
+            <section class="content-block" id="seccion-2-4">
+                <h2><span class="section-number">2.4</span> Forzar estados (:hover, :active, etc.)</h2>
+                
+                <p>¿Alguna vez quisiste inspeccionar un elemento que solo aparece al hacer hover o al enfocar? El panel Elements te permite "forzar" esos estados.</p>
+                
+                <div class="two-column-layout">
+                    <div class="text-content">
+                        <h3>Cómo hacerlo:</h3>
+                        <ol class="styled-list">
+                            <li>Selecciona el elemento en el árbol DOM.</li>
+                            <li>En la pestaña "Styles", busca el ícono <code>:hov</code> (un círculo con una línea punteada).</li>
+                            <li>Marca la pseudoclase que quieras forzar (:hover, :active, :focus, :visited, etc.)</li>
+                            <li>¡El elemento se queda en ese estado aunque no estés interactuando!</li>
+                        </ol>
+                    </div>
+                    <div class="illustration">
+                        <svg width="200" height="100" viewBox="0 0 200 100">
+                            <rect x="10" y="10" width="180" height="80" fill="#2d2d2d" rx="8" />
+                            <text x="100" y="35" text-anchor="middle" fill="#64ffda" font-size="12">:hov</text>
+                            <circle cx="100" cy="60" r="25" fill="#64ffda" opacity="0.3" />
+                            <text x="100" y="68" text-anchor="middle" fill="white" font-size="10">hover</text>
+                            <text x="100" y="85" text-anchor="middle" fill="white" font-size="8">active</text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Elemento con hover usando clases CSS en lugar de inline -->
+                <div class="demo-hover-container">
+                    <button class="demo-hover-btn" id="boton-hover">
+                        Pasa el ratón por encima (hover)
+                    </button>
+                </div>
+                
+                <div class="exercise-box">
+                    <h4>⚡ Ejercicio 2.4: Atrapa ese hover</h4>
+                    <ol>
+                        <li>Inspecciona el botón de arriba.</li>
+                        <li>En la pestaña "Styles", busca el botón <code>:hov</code> y marca la opción ":hover".</li>
+                        <li>Ahora el botón se queda en estado hover permanentemente, aunque no tengas el ratón encima.</li>
+                        <li>Observa los estilos que cambian (color de fondo, texto, transformación).</li>
+                        <li>Desmarca :hover para volver a la normalidad.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 2.5 Ejercicio integrador -->
+            <section class="content-block" id="seccion-2-5">
+                <h2><span class="section-number">2.5</span> Ejercicio integrador: El maquetador en vivo</h2>
+                
+                <p>Vamos a combinar todo lo aprendido. Aquí tienes una tarjeta de presentación con algunos "problemas" de diseño. Tu tarea es arreglarlos usando solo el panel Elements (sin tocar el código fuente).</p>
+                
+                <!-- Tarjeta con problemas -->
+                <div class="exercise-area" id="area-ejercicio-final">
+                    <div class="card-demo" id="tarjeta-problemas">
+                        <h3>Ana García</h3>
+                        <p>Desarrolladora frontend</p>
+                        <button>Contactar</button>
+                    </div>
+                    
+                    <h4 style="margin-top: 2rem;">📋 Instrucciones:</h4>
+                    <p>La tarjeta tiene varios problemas visuales. Usa el inspector para:</p>
+                    <ol class="styled-list">
+                        <li>Cambiar el color del texto del nombre a azul oscuro (#0a1929) - actualmente es negro.</li>
+                        <li>El párrafo debería tener color gris (#64748b) en lugar de negro.</li>
+                        <li>El botón tiene el texto "Contactar", pero debería decir "Ver perfil".</li>
+                        <li>El botón tiene fondo azul oscuro, pero al pasar el ratón (hover) debería volverse más claro. ¿Puedes forzar el hover para ver cómo se ve? (no necesitas cambiarlo, solo inspeccionar el estado).</li>
+                        <li>Añade un borde redondeado más grande al botón (20px en lugar de 6px).</li>
+                        <li>La tarjeta no tiene sombra. Añade una sombra suave desde el inspector (box-shadow: 0 10px 15px rgba(0,0,0,0.1)).</li>
+                    </ol>
+                    
+                    <details>
+                        <summary>🔍 Ver soluciones (inténtalo primero)</summary>
+                        <ul>
+                            <li><strong>Color nombre:</strong> Inspecciona el h3, en Styles añade o modifica <code>color: #0a1929;</code></li>
+                            <li><strong>Color párrafo:</strong> Inspecciona el p, añade <code>color: #64748b;</code></li>
+                            <li><strong>Texto botón:</strong> Doble clic en el texto del botón en el árbol DOM y cámbialo.</li>
+                            <li><strong>Hover:</strong> Selecciona el botón, usa :hov y marca :hover.</li>
+                            <li><strong>Borde botón:</strong> En los estilos del botón, cambia <code>border-radius: 20px;</code></li>
+                            <li><strong>Sombra:</strong> En los estilos de .card-demo, añade <code>box-shadow: 0 10px 15px rgba(0,0,0,0.1);</code></li>
+                        </ul>
+                    </details>
+                </div>
+                
+                <div class="note" style="margin-top: 2rem;">
+                    <strong>🎯 Objetivo:</strong> Al terminar este ejercicio, serás capaz de modificar cualquier página web temporalmente, lo cual es increíblemente útil para maquetar y probar cambios rápidos.
+                </div>
+            </section>
+
+            <!-- Resumen del capítulo -->
+            <section class="content-block chapter-summary">
+                <h2>📌 Resumen del Capítulo 2</h2>
+                <ul class="summary-list">
+                    <li>El panel Elements muestra el árbol DOM y los estilos aplicados.</li>
+                    <li>Puedes editar HTML y CSS en tiempo real (cambios temporales).</li>
+                    <li>El Box Model (margin, border, padding, content) es clave para entender el diseño.</li>
+                    <li>Puedes forzar pseudoclases como :hover para inspeccionar estados.</li>
+                    <li>El inspector es la herramienta más rápida para probar cambios visuales.</li>
+                </ul>
+                
+                <div class="next-steps">
+                    <h3>⏭️ Preparación para el Capítulo 3</h3>
+                    <p>En el próximo capítulo exploraremos el panel <strong>Console</strong>, donde comenzaremos a interactuar con JavaScript y a ver errores en tiempo real.</p>
+                    <p>Antes de avanzar, practica:</p>
+                    <ul>
+                        <li>Inspecciona cualquier página web que te guste y cambia algún texto o color.</li>
+                        <li>Intenta ocultar un elemento (desde Styles, añade <code>display: none</code> y luego vuelve a mostrarlo).</li>
+                    </ul>
+                    <a href="capitulo3-console.html" class="button">Continuar al Capítulo 3 →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>Manual de Debugging para Principiantes · <a href="../about.html">Sobre este proyecto</a></p>
+            <p>Capítulo 2 completado · Siguiente: Panel Console</p>
+            <p><a href="../index.html">← Volver al Capítulo 1</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/utils/helpers.js"></script>
+    <script src="../js/components/header.js"></script>
+    <script src="../js/components/footer.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <!-- Script específico para el capítulo 2 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Registrar progreso del capítulo 2
+            if (window.DebugHelpers) {
+                DebugHelpers.saveProgress(2, 'elements');
+            }
+            
+            // Mensaje de bienvenida al capítulo
+            console.log('🎯 Capítulo 2: Panel Elements cargado. ¡A inspeccionar!');
+        });
+    </script>
+</body>
+</html>

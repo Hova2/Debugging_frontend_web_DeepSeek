@@ -1,0 +1,267 @@
+# ==============================
+# COMPILED BINARIES / EXECUTABLES
+# ==============================
+*.class
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.a
+*.lib
+*.obj
+*.elf
+*.out
+*.bin
+*.hex
+*.elf
+*.pdb
+*.ilk
+*.exp
+*.map
+*.manifest
+
+# Assembler/object files
+*.ko
+*.mod
+*.sym
+
+# ==============================
+# PACKAGES / DEPENDENCIES
+# ==============================
+# Node.js / npm / yarn
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Python (common in mixed projects)
+__pycache__/
+*.py[cod]
+*.so
+.Python
+env/
+venv/
+ENV/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# ==============================
+# BINARY / MEDIA FILES
+# ==============================
+# Images (exclude only if not project assets)
+*.bmp
+*.gif
+*.ico
+*.jpeg
+*.jpg
+*.png
+*.psd
+*.ai
+*.eps
+*.svgz
+*.webp
+*.tiff
+*.tif
+*.raw
+
+# Audio
+*.mp3
+*.wav
+*.aac
+*.flac
+*.ogg
+*.m4a
+*.wma
+
+# Video
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.mkv
+*.webm
+*.m4v
+
+# Binary documents (exclude if not official documentation)
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+*.odt
+*.ods
+*.odp
+*.pages
+*.numbers
+*.key
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+*.accdb
+*.frm
+*.ibd
+*.ndb
+
+# ==============================
+# COMPRESSED FILES / INSTALLERS
+# ==============================
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.tar.bz2
+*.tbz2
+*.tar.xz
+*.txz
+*.rar
+*.7z
+*.dmg
+*.iso
+*.img
+*.msi
+*.exe
+*.deb
+*.rpm
+*.apk
+*.appimage
+
+# ==============================
+# EDITORS / IDEs
+# ==============================
+# VSCode
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+
+# IntelliJ / JetBrains
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+bin/
+
+# Other editors
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+*.old
+*.orig
+
+# ==============================
+# OPERATING SYSTEM
+# ==============================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+*.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Desktop.ini
+Thumbs.db
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+
+# ==============================
+# LOGS AND TEMPORARY FILES
+# ==============================
+*.log
+*.log.*
+logs/
+logs/*
+*.pid
+*.seed
+*.pid.lock
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ==============================
+# ENVIRONMENT VARIABLES
+# ==============================
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+
+# ==============================
+# CONTAINERS / VIRTUALIZATION
+# ==============================
+.dockerignore
+docker-compose.override.yml
+*.vmdk
+*.vdi
+*.vhd
+*.vhdx
+*.qcow2
+*.ova
+*.ovf
+
+# ==============================
+# COVERAGE / TESTING
+# ==============================
+coverage/
+.nyc_output/
+.pytest_cache/
+.jest/
+.cache/
+.sonar/

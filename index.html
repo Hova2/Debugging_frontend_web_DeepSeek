@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Debugging · Capítulo 1</title>
+    
+    <!-- CSS estructura modular -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header componente -->
+    <header class="site-header" id="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/icons/favicon.ico" alt="🐛" width="32" height="32">
+                <span>DebugManual</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Capítulo 1</a></li>
+                    <li><a href="pages/capitulo2-elements.html">Capítulo 2</a></li>
+                    <li><a href="pages/capitulo3-console.html">Capítulo 3</a></li>
+                    <li><a href="about.html">Sobre el manual</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido principal del capítulo -->
+    <main class="chapter-content">
+        <div class="container">
+            <!-- Barra de progreso -->
+            <div class="progress-indicator">
+                <span class="chapter-badge">Capítulo 1 de 10</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 10%"></div>
+                </div>
+            </div>
+
+            <!-- Título del capítulo -->
+            <h1 class="chapter-title">
+                <span class="title-number">1.</span> 
+                Introducción al Debugging
+                <small>El arte de preguntarle al código</small>
+            </h1>
+
+            <!-- Bloque 1.1: Historia -->
+            <section class="content-block" id="seccion-1-1">
+                <h2><span class="section-number">1.1</span> El primer bug de la historia</h2>
+                
+                <div class="two-column-layout">
+                    <div class="text-content">
+                        <p>En 1947, en la Universidad de Harvard, un equipo de ingenieros trabajaba en la computadora Mark II. De repente, la máquina comenzó a dar errores. Al abrir los paneles, encontraron algo inesperado: una polilla (un <em>moth</em>) atrapada entre los relés.</p>
+                        
+                        <p>Grace Hopper, pionera de la programación, pegó el insecto en el libro de registro con la nota: <strong>"First actual case of bug being found"</strong>. Así nació el término "debugging".</p>
+                        
+                        <aside class="note">
+                            <strong>📌 Dato curioso:</strong> Aunque Hopper popularizó el término, "bug" ya se usaba en ingeniería desde el siglo XIX para fallos mecánicos.
+                        </aside>
+                    </div>
+                    
+                    <figure class="illustration">
+                        <img src="assets/images/primer-bug.png" 
+                             alt="Fotografía del libro de registro con la polilla pegada"
+                             onerror="this.src='https://placehold.co/400x300/0a1929/64ffda?text=🐛+Primer+Bug'">
+                        <figcaption>Registro original del primer bug (1947)</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <!-- Bloque 1.2: Mentalidad -->
+            <section class="content-block" id="seccion-1-2">
+                <h2><span class="section-number">1.2</span> La mentalidad del detective</h2>
+                
+                <p>Debuggear no es solo "arreglar código". Es una forma de pensar. Adopta estos 3 principios:</p>
+                
+                <div class="cards-container">
+                    <article class="card">
+                        <div class="card-icon">🔍</div>
+                        <h3>Curiosidad</h3>
+                        <p>Pregúntate "¿por qué pasó esto?" en lugar de "no funciona". Cada error es una oportunidad.</p>
+                    </article>
+                    
+                    <article class="card">
+                        <div class="card-icon">⏳</div>
+                        <h3>Paciencia</h3>
+                        <p>Los bugs no se rinden fácil. Respira hondo y verifica, no adivines.</p>
+                    </article>
+                    
+                    <article class="card">
+                        <div class="card-icon">🧪</div>
+                        <h3>Método científico</h3>
+                        <p>Hipótesis → Experimento → Observación → Conclusión.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Bloque 1.3: Tipos de errores -->
+            <section class="content-block" id="seccion-1-3">
+                <h2><span class="section-number">1.3</span> Los 3 tipos de errores</h2>
+                
+                <!-- Error de sintaxis -->
+                <div class="error-card error-syntax">
+                    <div class="error-header">
+                        <span class="error-tag">SINTAXIS</span>
+                        <code class="error-message">missing ) after argument list</code>
+                    </div>
+                    
+                    <p><strong>¿Qué es?</strong> Error de ortografía en el código. Al lenguaje no le gusta cómo escribiste algo.</p>
+                    
+                    <div class="code-comparison">
+                        <div class="wrong">
+                            <div class="code-label">❌ Incorrecto</div>
+                            <pre><code>console.log('Hola mundo'</code></pre>
+                        </div>
+                        <div class="right">
+                            <div class="code-label">✅ Correcto</div>
+                            <pre><code>console.log('Hola mundo');</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p class="difficulty">🟢 <strong>Fáciles:</strong> El navegador te avisa con una línea roja.</p>
+                </div>
+
+                <!-- Error de lógica -->
+                <div class="error-card error-logic">
+                    <div class="error-header">
+                        <span class="error-tag">LÓGICA</span>
+                        <code class="error-message">El programa corre, pero hace otra cosa</code>
+                    </div>
+                    
+                    <p><strong>¿Qué es?</strong> La receta está bien escrita, pero la instrucción es incorrecta.</p>
+                    
+                    <div class="code-comparison">
+                        <div class="wrong">
+                            <div class="code-label">❌ Queremos IVA</div>
+                            <pre><code>function precioConIva(precio) {
+    return precio - 0.21;  // Resta en vez de sumar
+}</code></pre>
+                        </div>
+                        <div class="right">
+                            <div class="code-label">✅ Correcto</div>
+                            <pre><code>function precioConIva(precio) {
+    return precio * 1.21;
+}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p class="difficulty">🟡 <strong>Tramposos:</strong> No hay mensajes de error, hay que descubrir que el resultado es incorrecto.</p>
+                </div>
+
+                <!-- Error de runtime -->
+                <div class="error-card error-runtime">
+                    <div class="error-header">
+                        <span class="error-tag">RUNTIME</span>
+                        <code class="error-message">Uncaught TypeError: cannot read property 'x' of undefined</code>
+                    </div>
+                    
+                    <p><strong>¿Qué es?</strong> El código es correcto, pero algo inesperado pasa al ejecutarse.</p>
+                    
+                    <div class="code-comparison">
+                        <div class="wrong">
+                            <div class="code-label">❌ Falla</div>
+                            <pre><code>const usuario = { nombre: 'Ana' };
+console.log(usuario.direccion.calle);</code></pre>
+                        </div>
+                        <div class="right">
+                            <div class="code-label">✅ Seguro</div>
+                            <pre><code>const usuario = { nombre: 'Ana' };
+console.log(usuario.direccion?.calle);</code></pre>
+                        </div>
+                    </div>
+                    
+                    <p class="difficulty">🔴 <strong>Explosivos:</strong> Rompen la aplicación y muestran error en consola.</p>
+                </div>
+            </section>
+
+            <!-- Bloque 1.4: Herramientas -->
+            <section class="content-block" id="seccion-1-4">
+                <h2><span class="section-number">1.4</span> Tu caja de herramientas</h2>
+                
+                <ul class="tool-list">
+                    <li>
+                        <strong>🌐 Navegador (Chrome/Edge):</strong>
+                        <span>Donde viven las páginas y sus errores.</span>
+                    </li>
+                    <li>
+                        <strong>🛠️ DevTools (F12):</strong>
+                        <span>Tu navaja suiza. Por ahora, solo la consola.</span>
+                    </li>
+                    <li>
+                        <strong>📝 Editor de código (VS Code):</strong>
+                        <span>Donde escribes y corriges.</span>
+                    </li>
+                    <li>
+                        <strong>🧠 Tu mente curiosa:</strong>
+                        <span>La herramienta más importante.</span>
+                    </li>
+                </ul>
+
+                <!-- Mock de consola visual -->
+                <div class="console-mock">
+                    <div class="console-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="console-title">Consola del navegador</span>
+                    </div>
+                    <div class="console-body">
+                        <div class="line"><span class="prompt">></span> console.log("Hola mundo");</div>
+                        <div class="line output">Hola mundo</div>
+                        <div class="line"><span class="prompt">></span> usuario.direccion.calle</div>
+                        <div class="line error">Uncaught TypeError: Cannot read property 'calle' of undefined</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resumen y ejercicios -->
+            <section class="content-block chapter-end">
+                <h2>📌 Resumen del capítulo</h2>
+                <ul class="summary-list">
+                    <li>El primer bug fue una polilla real en 1947.</li>
+                    <li>Debuggear requiere curiosidad, paciencia y método científico.</li>
+                    <li>Errores de sintaxis: fáciles de detectar (faltan paréntesis, llaves).</li>
+                    <li>Errores de lógica: el código funciona, pero mal (tramposos).</li>
+                    <li>Errores de runtime: explotan al ejecutarse (impredecibles).</li>
+                    <li>La consola del navegador es tu mejor aliada para empezar.</li>
+                </ul>
+
+                <div class="next-steps">
+                    <h3>⏭️ Antes del Capítulo 2:</h3>
+                    <ol>
+                        <li>Abre la consola de esta página (F12) y escribe <code>console.log("Aprendiendo")</code></li>
+                        <li>Escribe <code>document.title</code> y mira qué devuelve.</li>
+                        <li>Busca el error en este código: 
+                            <pre><code>function saludo() {
+    console.log('Hola ' + nombre)
+    let nombre = 'Ana'
+}</code></pre>
+                        </li>
+                    </ol>
+                    <a href="pages/capitulo2-elements.html" class="button">Continuar al Capítulo 2 →</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer componente -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>Manual de Debugging para Principiantes · <a href="about.html">Sobre este proyecto</a></p>
+            <p>Capítulo 1 completado · Siguiente: Panel Elements</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript modular -->
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/components/header.js"></script>
+    <script src="js/components/footer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
